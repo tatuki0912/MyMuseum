@@ -309,7 +309,7 @@ function createObject() {
         { normal: [1, 0, 0], distance: 10 },
         { normal: [-1, 0, 0], distance: 10 },
     ];
-
+    // raycast
     let nearestIntersection = null;
     let nearestDistance = Infinity;
     let origin = cameraPosition
