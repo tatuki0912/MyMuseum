@@ -196,90 +196,6 @@ const mat3 = {
                 0, 1, 0,
                 0, 0, 1];
     },
-
-    fromMat4: function(out, a) {
-        out[0] = a[0]; out[1] = a[1]; out[2] = a[2];
-        out[3] = a[4]; out[4] = a[5]; out[5] = a[6];
-        out[6] = a[8]; out[7] = a[9]; out[8] = a[10];
-        return out;
-    },
-
-    transpose: function(out, a) {
-        if (out === a) {
-            let a01 = a[1], a02 = a[2], a12 = a[5];
-            out[1] = a[3];
-            out[2] = a[6];
-            out[3] = a01;
-            out[5] = a[7];
-            out[6] = a02;
-            out[7] = a12;
-        } else {
-            out[0] = a[0];
-            out[1] = a[3];
-            out[2] = a[6];
-            out[3] = a[1];
-            out[4] = a[4];
-            out[5] = a[7];
-            out[6] = a[2];
-            out[7] = a[5];
-            out[8] = a[8];
-        }
-        return out;
-    },
-
-    invert: function(out, a) {
-        const a00 = a[0], a01 = a[1], a02 = a[2];
-        const a10 = a[3], a11 = a[4], a12 = a[5];
-        const a20 = a[6], a21 = a[7], a22 = a[8];
-
-        const b01 = a22 * a11 - a12 * a21;
-        const b11 = -a22 * a10 + a12 * a20;
-        const b21 = a21 * a10 - a11 * a20;
-
-        let det = a00 * b01 + a01 * b11 + a02 * b21;
-
-        if (!det) {
-            return null;
-        }
-        det = 1.0 / det;
-
-        out[0] = b01 * det;
-        out[1] = (-a22 * a01 + a02 * a21) * det;
-        out[2] = (a12 * a01 - a02 * a11) * det;
-        out[3] = b11 * det;
-        out[4] = (a22 * a00 - a02 * a20) * det;
-        out[5] = (-a12 * a00 + a02 * a10) * det;
-        out[6] = b21 * det;
-        out[7] = (-a21 * a00 + a01 * a20) * det;
-        out[8] = (a11 * a00 - a01 * a10) * det;
-
-        return out;
-    },
-
-    multiply: function(out, a, b) {
-        const a00 = a[0], a01 = a[1], a02 = a[2];
-        const a10 = a[3], a11 = a[4], a12 = a[5];
-        const a20 = a[6], a21 = a[7], a22 = a[8];
-
-        const b00 = b[0], b01 = b[1], b02 = b[2];
-        const b10 = b[3], b11 = b[4], b12 = b[5];
-        const b20 = b[6], b21 = b[7], b22 = b[8];
-
-        out[0] = a00 * b00 + a01 * b10 + a02 * b20;
-        out[1] = a00 * b01 + a01 * b11 + a02 * b21;
-        out[2] = a00 * b02 + a01 * b12 + a02 * b22;
-
-        out[3] = a10 * b00 + a11 * b10 + a12 * b20;
-        out[4] = a10 * b01 + a11 * b11 + a12 * b21;
-        out[5] = a10 * b02 + a11 * b12 + a12 * b22;
-
-        out[6] = a20 * b00 + a21 * b10 + a22 * b20;
-        out[7] = a20 * b01 + a21 * b11 + a22 * b21;
-        out[8] = a20 * b02 + a21 * b12 + a22 * b22;
-
-        return out;
-    },
-
     normalFromMat4: function(out, a) {
         const a00 = a[0], a01 = a[1], a02 = a[2], a03 = a[3];
         const a10 = a[4], a11 = a[5], a12 = a[6], a13 = a[7];
@@ -329,42 +245,10 @@ const vec3 = {
     dot: function(a, b) {
         return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
     },
-
-    add: function(out, a, b) {
-        out[0] = a[0] + b[0];
-        out[1] = a[1] + b[1];
-        out[2] = a[2] + b[2];
-        return out;
-    },
-
-    subtract: function(out, a, b) {
-        out[0] = a[0] - b[0];
-        out[1] = a[1] - b[1];
-        out[2] = a[2] - b[2];
-        return out;
-    },
-
-    scale: function(out, a, s) {
-        out[0] = a[0] * s;
-        out[1] = a[1] * s;
-        out[2] = a[2] * s;
-        return out;
-    },
-
     scaleAndAdd: function(out, a, b, scale) {
         out[0] = a[0] + b[0] * scale;
         out[1] = a[1] + b[1] * scale;
         out[2] = a[2] + b[2] * scale;
-        return out;
-    },
-
-    cross: function(out, a, b) {
-        const ax = a[0], ay = a[1], az = a[2];
-        const bx = b[0], by = b[1], bz = b[2];
-
-        out[0] = ay * bz - az * by;
-        out[1] = az * bx - ax * bz;
-        out[2] = ax * by - ay * bx;
         return out;
     }
 };
