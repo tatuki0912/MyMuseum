@@ -1,0 +1,197 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Noto Serif JP', serif;
+}
+#menu {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url('https://images.unsplash.com/photo-1572947650440-e8a97ef053b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    text-align: center;
+}
+
+#menu::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    position: relative;
+}
+input{
+    align-self: center;
+    margin-bottom: 10px;
+}
+#startButton {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+#startButton:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+#museumCanvas {
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+.popup {
+    overflow: auto;
+    display: none;
+    position: absolute;
+    margin: auto;
+    max-width: 100%;
+    max-height: 70%;
+    width: calc(100vh * 6 / 7);
+    height: calc(100vw * 4 /5);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+    color: white;
+}
+.btn:hover{
+    color: rgba(150, 150, 150);
+}
+.popup-header {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.popup-header h2 {
+    margin: 0;
+    text-align: center;
+}
+
+.popup-content {
+    padding: 20px;
+}
+
+#joystick-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    touch-action: none;
+    z-index: 1000;
+    display: none;
+}
+
+#joystick {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    left: 30px;
+    top: 30px;
+}
+
+#putButton {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 20px;
+    rotate: -90deg;
+    background: rgba(255, 255, 255, 0.5);
+    border-color: black;
+    border-radius: 50%;
+    z-index: 1000;
+    display: none;
+}
+.icon {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 50px;
+    cursor: pointer;
+    z-index: 1000;
+    display: none;
+}
+
+.icon:hover {
+    opacity: 0.7;
+}#infoIcon{
+    top: 18px;
+    left: 70px;
+    width: 35px;
+}
+#loadWorldBtn{
+    display: none;
+}
+.form-range {
+    width: 70%;
+}
+
+.btn {
+    color: white;
+    border-color: white;
+    border-radius: 0;
+    margin-bottom: 10px;
+}
+
+.form-range::-webkit-slider-thumb {
+    background: white;
+}
+
+.form-range::-moz-range-thumb {
+    background: white;
+}
+
+.form-range::-ms-thumb {
+    background: white;
+}
+
+.form-label {
+    color: white;
+}
+.popup img{
+    margin: 10px;
+    position: relative;
+    width: 70%;
+}
+#crosshair {
+    display: none;
+    position: absolute;
+    top: calc(50% - 20px);
+    left: calc(50% - 10px);
+    width: 20px;
+    height: 20px;
+    font-size: 300%;
+    opacity: 0.7;
+    z-index: 1000;
+    background: transparent;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
